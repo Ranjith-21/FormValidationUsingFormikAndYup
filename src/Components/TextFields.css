@@ -1,0 +1,14 @@
+.input
+{
+    width: 150px;
+}
+
+.mainDiv
+{
+    text-align: start;
+}
+.error {
+    position: absolute;
+    color: red;
+    font-size: 0.6rem;
+}

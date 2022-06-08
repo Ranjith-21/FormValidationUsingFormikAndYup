@@ -1,24 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
+import Signup from './Components/Signup';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Batch from './Batch';
+import Employee from './Employee';
+import { useEffect } from 'react';
 
 function App() {
+  const data=[
+        {
+            username:'Ranjith',
+            Password:'reddy@123',
+            role:'Admin'
+        },
+        {
+            username:'Hemanth',
+            Password:'hema@123',
+            role:'Employee'
+        }
+    ]
+
+    useEffect(()=>{
+        localStorage.setItem("data",JSON.stringify(data))
+    },[])
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+     {/* <Signup/> */}
+     <Routes>
+       <Route path='/' element={<Signup/>}/>
+                   <Route path='/Batch' element={<Batch/>} />
+                    <Route path='/Employee' element={<Employee/>} />
+                   </Routes>
+    </BrowserRouter>
   );
 }
 
